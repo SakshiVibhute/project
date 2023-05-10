@@ -1,0 +1,20 @@
+h2>This is service communication</h2>
+
+{{data | json}}
+
+<!-- {{userData | json}} -->
+
+<table class="table table-resposive">
+    <tr>
+        <th>Name</th>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Address</th>
+    </tr>
+    <tr *ngFor="let dt of userData">
+        <td>{{dt.name}}</td>
+        <td> {{dt.username}}</td>
+        <td>{{dt.email}}</td>
+        <td>{{dt.address.city}} {{dt.address.geo.lat}}</td>
+    </tr>
+</table>

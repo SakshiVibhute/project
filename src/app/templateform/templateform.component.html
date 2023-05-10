@@ -1,0 +1,64 @@
+<div class="container">
+    <form name="myTemplateform" #myForm="ngForm"(ngSubmit)="myForm.form.valid && onSubmitBtn(myForm)">
+        <div class="form-group">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" name="uname" class="form-control" #uname="ngModel" ngModel
+            [ngClass]="{'is-invalid':myForm.submitted && uname.invalid}" required maxlength="10" minlength="3">
+            <div *ngIf="uname.touched" class="invalid-feedback">
+                 
+                
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" #email="ngModel" ngModel
+            [ngClass]="{'is-invalid':myForm.submitted && uname.invalid}" required pattern="('((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')">
+            <div *ngIf="email.touched" class="invalid-feedback">
+                <div *ngIf="email.errors?.['required']">this field is required</div>
+                <div *ngIf="email.errors?.['pattern']">Please enter valid email id</div>
+    
+    
+                
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="form-label">password</label>
+            <input type="password" name="pass" class="form-control" #pass="ngModel" ngModel
+            [ngClass]="{'is-invalid':myForm.submitted && pass.invalid}" required maxlength="10" minlength="3">
+            <div *ngIf="pass.touched" class="invalid-feedback">
+                <div *ngIf="pass.errors?.['required']">this field is required</div>
+                <div *ngIf="pass.errors?.['minlength']">minimum 3 letter reqired</div>
+                <div *ngIf="pass.errors?.['maxlength']">maximum 10 letters allowed</div>
+                
+            </div>
+
+        </div>
+
+        
+    
+        <div class="form-group">
+            <button class="btn btn-info">Submit</button>
+        </div>
+    </form>
+
+</div>
+<div>
+    <table class="table table-primary">
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>password</th>
+            
+        </tr>
+        <tr *ngFor="let dt of allData">
+            <td>{{dt.uname}}</td>
+            <td>{{dt.email}}</td>
+            <td>{{dt.pass}}</td>
+        
+        </tr>
+    </table>
+</div>
